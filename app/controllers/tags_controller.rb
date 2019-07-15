@@ -7,8 +7,8 @@ class TagsController < ApplicationController
         tag.save
 
         redirect_to family
-        
-        binding.pry
+
+        #binding.pry
     end
 
     private

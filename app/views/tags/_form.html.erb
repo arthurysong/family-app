@@ -1,6 +1,5 @@
 <%= form_for tag do |f| %>
     <%= f.hidden_field :board_id, :value => board.id %>    
-    <%= f.label :content %>
     <%= f.text_area :content %>
 
     <%= f.submit "Post Tag" %>
