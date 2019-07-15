@@ -24,10 +24,11 @@ class RolesController < ApplicationController
     end
     
     def delete
-
+        Role.find(params[:role_id]).destroy
+        redirect_to family_path(Family.find(params[:family_id]))
     end
 
-    
+
     private
 
     def role_params
