@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :families, only: [:show] do
     resources :roles, only: [:new, :create, :destroy]
   end
+  resources :tags, only: [:create]
   #resources :roles, only: [:create]
   #get '/users/new' => 'users#new'
   #post '/users' => 'users#create'
