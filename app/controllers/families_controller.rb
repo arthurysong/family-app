@@ -9,9 +9,8 @@ class FamiliesController < ApplicationController
     end
 
     def new
-
+        @family = Family.new
     end
-
 
     def create
 
