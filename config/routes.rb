@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :families
   resources :families, only: [:show] do
-    resources :roles, only: [:new, :create]
+    resources :roles, only: [:new, :create, :delete]
   end
   #resources :roles, only: [:create]
   #get '/users/new' => 'users#new'

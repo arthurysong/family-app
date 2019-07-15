@@ -9,7 +9,9 @@
 <% if logged_in? %>
     <% if @family.users.include?(current_user) %>
         <%= render partial: 'boards/board', locals: { board: @family.board } %>
-
+        <br>
+        <% role = Role.find_by(user_id: current_user.id, family_id: @family.id) %>
+        <%= link_to "Leave Family", "/families/#{@family.id}/roles/#{role.id}", method: :delete %>
     <% else %>
         <%= link_to "Join the #{@family.last_name} Family", new_family_role_path(@family.id) %>
     <% end %>

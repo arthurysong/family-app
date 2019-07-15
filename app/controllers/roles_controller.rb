@@ -23,6 +23,11 @@ class RolesController < ApplicationController
          
     end
     
+    def delete
+
+    end
+
+    
     private
 
     def role_params
