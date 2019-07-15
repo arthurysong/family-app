@@ -9,17 +9,17 @@ class RolesController < ApplicationController
     def create
         @family = Family.find(params[:family_id])
         if !!@family.password_digest
-            if @family.authenticate(params[:password])
-                role = Role.create(role_params)
-                role.user_id = current_user.id
-                role.family_id = @family.id
-                role.save
-                redirect_to @family
-            else
+            if !@family.authenticate(params[:password])
                 render 'roles/new'
                 flash[:notice] = "You have wrong password"
             end
         end
+
+        role = Role.create(role_params)
+        role.user_id = current_user.id
+        role.family_id = @family.id
+        role.save
+        redirect_to @family
          
     end
     
