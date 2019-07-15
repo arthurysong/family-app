@@ -16,6 +16,7 @@
       <a href="/users">People</a>
 
       <% if logged_in? %>
+        <%= link_to "Your Profile", user_path(current_user) %>
         Logged in as <%= current_user.first_name %>, 
         <%= link_to "Sign Out", '/signout', method: :post %>
       <% else %>

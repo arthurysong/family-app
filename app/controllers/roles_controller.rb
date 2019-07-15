@@ -24,7 +24,7 @@ class RolesController < ApplicationController
     end
     
     def destroy
-        binding.pry
+        #binding.pry
         Role.find(params[:id]).destroy
         redirect_to family_path(Family.find(params[:family_id]))
     end
