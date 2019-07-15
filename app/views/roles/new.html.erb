@@ -1,4 +1,8 @@
-<%= form_tag '/roles' do %>
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+<%= form_tag "/families/#{@family.id}/roles" do %>
     <% if !!@family.password_digest %>
 
         <%= label_tag 'password', "Password:" %>
