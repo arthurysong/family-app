@@ -29,7 +29,7 @@ eric = User.create(first_name: "Eric", email: "eric@gmail.com", password: "123")
 robert = User.create(first_name: "Robert", email: "robert@gmail.com", password: "123")
 mia = User.create(first_name: "Mia", email: "mia@gmail.com", password: "123")
     
-wallace_family = Family.create(last_name: "Wallace")
+wallace_family = Family.create(last_name: "Wallace", password: "123")
     
 Role.create(title: "Dad", user_id: robert.id, family_id: wallace_family.id)
 Role.create(title: "Mom", user_id: mia.id, family_id: wallace_family.id)
