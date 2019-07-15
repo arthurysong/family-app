@@ -11,13 +11,4 @@ class User < ActiveRecord::Base
         Role.find_by(user_id: self.id, family_id: family.id)
     end
 
-    def create_tag_for_this_familys_board(family, content)
-        role = my_role_in_this_family(family)
-        board = family.board
-        if role.family == family
-            tag = family.board.tags.build(content: content)
-            tag.role = role
-            tag.save
-        end
-    end
 end
