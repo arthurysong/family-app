@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_003505) do
+ActiveRecord::Schema.define(version: 2019_07_15_075213) do
 
   create_table "boards", force: :cascade do |t|
-    t.string "header"
+    t.string "header", default: "(No Header)"
     t.integer "family_id"
   end
 

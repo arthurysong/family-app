@@ -1,4 +1,24 @@
 <%= form_for @family do |f| %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <br>
 
+    (Password is optional)<br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br>
+    
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <br><br>
 
+    <%= label_tag "header", "Create Header for your family" %>
+    <%= text_field_tag "header" %>
+    <br><br>
+
+    <%= label_tag "title", "Choose your title:" %>
+    <%= select_tag "title", raw("<option>Mom</option><option>Dad</option><option>Eldest</option><option selected='selected'>Middle</option><option>Youngest</option>") %>
+    <br>
+
+    <%= f.submit %>
 <% end %>

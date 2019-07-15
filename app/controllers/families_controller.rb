@@ -13,19 +13,24 @@ class FamiliesController < ApplicationController
     end
 
     def create
+        @family = Family.create(family_params)
+        @family.board = Board.create()
+        role = Role.create(title: params[:title])
+        role.family = @family
+        role.user = current_user
+        role.save
 
+        if @family.valid?
+            redirect_to @family
+        else
+            render 'families/new'
+        end
     end
 
-    def edit
 
+    private
+
+    def family_params
+        params.require(:family).permit(:last_name, :password, :password_confirmation)
     end
-    
-    def update
-
-    end
-
-    def delete
-        
-    end
-
 end
