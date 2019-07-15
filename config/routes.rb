@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   resources :families
   #get '/users/new' => 'users#new'
   #post '/users' => 'users#create'
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  post '/signout' => 'sessions#destroy'
 
 
   root 'application#index'

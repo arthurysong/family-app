@@ -6,9 +6,13 @@
     <% end %>
 </ul>
 
-<% if @family.users.include?(current_user) %>
-    <%= render partial: 'boards/board', locals: { board: @family.board } %>
+<% if logged_in? %>
+    <% if @family.users.include?(current_user) %>
+        <%= render partial: 'boards/board', locals: { board: @family.board } %>
 
+    <% else %>
+        <%= link_to "Join #{@family.last_name} Family", '/roles/new' %>
+    <% end %>
 <% else %>
-    
+    <h4><%= link_to "Sign Up", "/users/new" %> or <%= link_to "Sign In", "/signin" %> to join Family!</h4>
 <% end %>
