@@ -1,0 +1,14 @@
+<h1><%= @family.last_name %> Family</h1>
+
+<ul>
+    <% @family.roles.each do |role| %>
+        <li><%= link_to role.user.first_name, user_path(role.user) %> <%= "(#{role.title})" %></li>
+    <% end %>
+</ul>
+
+<% if @family.users.include?(current_user) %>
+    <%= render partial: 'boards/board', locals: { board: @family.board } %>
+
+<% else %>
+    
+<% end %>

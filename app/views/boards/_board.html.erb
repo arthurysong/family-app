@@ -1,0 +1,11 @@
+<h1><%= board.header %></h1>
+<ul>
+    <% board.tags.each do |tag| %>
+        <li>
+        <%= tag.content %><br>
+        <%= tag.full_name_of_creator %>
+        <%= tag.created_at.strftime("posted %e %b %Y at %k:%M") %>
+        </li>
+        <br>
+    <% end %>
+</ul>

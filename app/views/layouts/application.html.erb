@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FamilyApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="nav">
+      <a href="/">Home</a>
+      <a href="/families">Families</a>
+      <a href="/users">People</a>
+
+      <% if logged_in? %>
+        Logged in as <%= current_user.first_name %>, 
+        <%= link_to "Log Out", '/logout', method: :post %>
+      <% else %>
+        <%= link_to "Log In", '/login' %>
+        <%= link_to "Sign Up", '/users/new' %>
+      <% end %>
+    </div>
+    <br><br><br><br><br>
+    <%= yield %>
+  </body>
+</html>

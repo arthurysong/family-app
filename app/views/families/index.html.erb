@@ -1,0 +1,6 @@
+<h1>Families</h1>
+<ul>
+<% @families.each do |family| %>
+    <li><%= link_to family.last_name, family_path(family) %></li>
+<% end %>
+</ul>
