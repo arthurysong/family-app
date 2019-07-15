@@ -10,8 +10,8 @@ class RolesController < ApplicationController
         @family = Family.find(params[:family_id])
         if !!@family.password_digest
             if !@family.authenticate(params[:password])
-                render 'roles/new'
                 flash[:notice] = "You have wrong password"
+                return render 'roles/new'
             end
         end
 
