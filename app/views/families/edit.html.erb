@@ -1,0 +1,7 @@
+<h1><%= @family.last_name %> Family</h1>
+<% @family.users.each do |user| %>
+    <% role = user.my_role_in_this_family(@family) %>
+    <% if user != current_user %>
+        <li><%= user.first_name %> <%= link_to "Disown", "/families/#{@family.id}/roles/#{role.id}", method: :delete %></li>
+    <% end %>
+<% end %>
