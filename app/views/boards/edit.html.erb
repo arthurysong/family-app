@@ -1,4 +1,11 @@
 <h1>Edit <%= @board.family.last_name %>'s Board</h1>
+
+<% if @board.errors.any? %>
+    <% @board.errors.full_messages.each do |message| %>
+        <%= message %><br>
+    <% end %>
+<% end %>
+
 <%= form_for @board do |f| %>
     <%= f.label :header %>
     <%= f.text_field :header %><br>
