@@ -10,10 +10,13 @@
     <% if @family.users.include?(current_user) %>
         <% role = Role.find_by(user_id: current_user.id, family_id: @family.id) %>
         <%= link_to "Leave Family", "/families/#{@family.id}/roles/#{role.id}", method: :delete %><br>
-        
+
         <%= link_to "Edit Family", "/families/#{@family.id}/edit" if User.parents_for_this_family(@family).include?(current_user) %>
+
+        
         <%= render partial: 'boards/board', locals: { board: @family.board } %>
         
+
         <%= render partial: 'tags/form', locals: { tag: Tag.new, board: @family.board } %> 
         <br>
         

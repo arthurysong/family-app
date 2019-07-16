@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :roles, only: [:new, :create, :destroy]
   end
   resources :tags, only: [:create]
+  resources :families, only: [:show] do 
+    resources :boards, only: [:edit]
+  end
+  resources :boards, only: [:update]
   #resources :roles, only: [:create]
   #get '/users/new' => 'users#new'
   #post '/users' => 'users#create'
@@ -13,7 +17,7 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   post '/signout' => 'sessions#destroy'
-  
+
 
   root 'application#index'
 end

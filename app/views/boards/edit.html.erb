@@ -1,0 +1,7 @@
+<h1>Edit <%= @board.family.last_name %>'s Board</h1>
+<%= form_for @board do |f| %>
+    <%= f.label :header %>
+    <%= f.text_field :header %><br>
+
+    <%= f.submit %>
+<% end %>
