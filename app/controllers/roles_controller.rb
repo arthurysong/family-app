@@ -3,6 +3,7 @@ class RolesController < ApplicationController
     def new
         #@role = Role.new
         @family = Family.find(params[:family_id])
+        @role = Role.new
         #binding.pry
     end
 
@@ -10,17 +11,21 @@ class RolesController < ApplicationController
         @family = Family.find(params[:family_id])
         if !!@family.password_digest
             if !@family.authenticate(params[:password])
-                flash[:notice] = "You have wrong password"
                 return render 'roles/new'
             end
         end
 
-        role = Role.create(role_params)
-        role.user_id = current_user.id
-        role.family_id = @family.id
-        role.save
-        redirect_to @family
-         
+        
+
+
+        @role = Role.create(role_params)
+        @role.user_id = current_user.id
+        @role.family_id = @family.id
+        if @role.save
+            redirect_to @family
+        else
+            render 'roles/new'
+        end 
     end
     
     def destroy
