@@ -8,17 +8,18 @@ class RolesController < ApplicationController
     end
 
     def create
+        #binding.pry
         @family = Family.find(params[:family_id])
+        @role = Role.new(role_params)
+
         if !!@family.password_digest
             if !@family.authenticate(params[:password])
+                flash[:notice] = "Wrong password"
                 return render 'roles/new'
             end
         end
-
+        #binding.pry
         
-
-
-        @role = Role.create(role_params)
         @role.user_id = current_user.id
         @role.family_id = @family.id
         if @role.save

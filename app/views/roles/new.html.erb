@@ -1,7 +1,5 @@
-<% if @family.errors.any? %>
-    <% @family.errors.full_messages.each do |message| %>
-        <%= message %><br>
-    <% end %>
+<% if flash[:notice] %>
+    <%= flash[:notice] %><br>
 <% end %>
 
 <% if @role.errors.any? %>
