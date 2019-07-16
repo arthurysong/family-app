@@ -40,6 +40,13 @@ class FamiliesController < ApplicationController
         end
     end
 
+    def edit
+        @family = Family.find(params[:id])
+    end
+
+    def update
+    
+    end
 
     private
 
