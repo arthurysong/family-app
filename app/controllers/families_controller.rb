@@ -20,7 +20,7 @@ class FamiliesController < ApplicationController
 
         board = Board.create()
         @family.board = board
-        if params[:header]
+        if params[:header] != ""
             board.header = params[:header]
             board.save
         end
