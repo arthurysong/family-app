@@ -1,4 +1,8 @@
 class FamiliesController < ApplicationController
+    before_action :require_login
+    skip_before_action :require_login, only: [:index, :show]
+
+    
     def index
         @families = Family.all
     end
@@ -41,16 +45,20 @@ class FamiliesController < ApplicationController
     end
 
     def edit
+        authorize_user_for_family_edit
         @family = Family.find(params[:id])
-    end
-
-    def update
-    
     end
 
     private
 
     def family_params
         params.require(:family).permit(:last_name, :password, :password_confirmation)
+    end
+
+    def authorize_user_for_family_edit
+        family = Family.find(params[:id])
+        if !(current_user.parent_of_this_family?(family))
+            redirect_to family
+        end
     end
 end
