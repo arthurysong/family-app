@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     def new
+        require_logout
         @user = User.new
     end
 
@@ -29,4 +30,9 @@ class UsersController < ApplicationController
         params.require(:user).permit(:email, :first_name, :password, :password_confirmation)
     end
 
+    def require_logout
+        if logged_in?
+            redirect_to current_user
+        end
+    end
 end

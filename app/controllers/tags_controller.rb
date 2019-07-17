@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
     def create
+        require_login
         family = Board.find(params[:tag][:board_id]).family
         if !(family.users.include?(current_user))
             redirect_to family and return
