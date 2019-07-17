@@ -48,11 +48,4 @@ class RolesController < ApplicationController
     def role_params
         params.permit(:title)
     end
-
-    def authorize_user_to_leave_family
-        family = Family.find(params[:family_id])
-        if !(family.users.include?(current_user))
-            redirect_to family
-        end
-    end
 end
