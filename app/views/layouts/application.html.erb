@@ -10,21 +10,23 @@
   </head>
 
   <body>
-    <div id="nav">
-      <a href="/">Home</a>
-      <a href="/families">Families</a>
-      <a href="/users">People</a>
+    <div id="container">
+      <div id="nav">
+        <span><a href="/">Home</a></span>
+        <span><a href="/families">Families</a></span>
+        <span><a href="/users">People</a></span>
 
-      <% if logged_in? %>
-        <%= link_to "Your Profile", user_path(current_user) %>
-        Logged in as <%= current_user.first_name %>, 
-        <%= link_to "Sign Out", '/signout', method: :post %>
-      <% else %>
-        <%= link_to "Sign In", '/signin' %>
-        <%= link_to "Sign Up", '/users/new' %>
-      <% end %>
+        <% if logged_in? %>
+          <span><%= link_to "Your Profile", user_path(current_user) %></span>
+          <span>Logged in as <%= current_user.first_name %>, 
+          <%= link_to "Sign Out", '/signout', method: :post %></span>
+        <% else %>
+          <span><%= link_to "Sign In", '/signin' %></span>
+          <span><%= link_to "Sign Up", '/users/new' %></span>
+        <% end %>
+      </div>
+      <br><br><br><br><br>
+      <%= yield %>
     </div>
-    <br><br><br><br><br>
-    <%= yield %>
   </body>
 </html>
