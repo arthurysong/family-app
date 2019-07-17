@@ -57,6 +57,7 @@ class FamiliesController < ApplicationController
 
     def authorize_user_for_family_edit
         family = Family.find(params[:id])
+        #binding.pry
         if !(current_user.parent_of_this_family?(family))
             redirect_to family
         end
