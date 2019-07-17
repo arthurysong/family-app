@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
     def self.parents_for_this_family(family)
         self.joins(:roles).where(roles: { title: ["Mom", "Dad"] }).where(roles: { family_id: family.id })
     end
+
+    def parent_of_this_family?(family)
+        User.parents_for_this_family(family).include?(self)
+    end
 end

@@ -10,5 +10,9 @@ class ApplicationController < ActionController::Base
         !!session[:user_id]
     end
 
+    def require_login
+        redirect_to '/signin' unless session.include? :user_id
+    end
+
     helper_method :current_user, :logged_in?
 end
