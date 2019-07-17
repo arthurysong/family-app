@@ -3,7 +3,7 @@ class TagsController < ApplicationController
         
         family = Board.find(params[:tag][:board_id]).family
         tag = Tag.create(tag_params)
-        tag.role = current_user.my_role_in_this_family(family)
+        tag.user = current_user
         tag.save
 
         redirect_to family

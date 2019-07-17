@@ -1,4 +1,5 @@
 class RolesController < ApplicationController
+    before_action :require_login
 
     def new
         #@role = Role.new
@@ -31,6 +32,12 @@ class RolesController < ApplicationController
     
     def destroy
         #binding.pry
+        family = Family.find(params[:family_id])
+        if !(family.users.include?(current_user))
+            redirect_to family and return
+        end
+
+        binding.pry
         Role.find(params[:id]).destroy
         redirect_to family_path(Family.find(params[:family_id]))
     end
@@ -42,5 +49,10 @@ class RolesController < ApplicationController
         params.permit(:title)
     end
 
-
+    def authorize_user_to_leave_family
+        family = Family.find(params[:family_id])
+        if !(family.users.include?(current_user))
+            redirect_to family
+        end
+    end
 end

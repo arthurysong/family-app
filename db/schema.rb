@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_075213) do
   create_table "tags", force: :cascade do |t|
     t.string "content"
     t.integer "board_id"
-    t.integer "role_id"
+    t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

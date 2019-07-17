@@ -18,4 +18,11 @@ class User < ActiveRecord::Base
     def parent_of_this_family?(family)
         User.parents_for_this_family(family).include?(self)
     end
+
+    def create_tag_for_this_familys_board(family, content)
+        tag = Tag.new(content: content)
+        tag.board = family.board
+        tag.user = self
+        tag.save
+    end
 end

@@ -22,6 +22,7 @@ lee_board.save
 arthur.create_tag_for_this_familys_board(lee_family, "I love my family")
 bob.create_tag_for_this_familys_board(lee_family, "I love my son Arthur and my wife Mary")
 mary.create_tag_for_this_familys_board(lee_family, "What do you guys want for dinner?")
+#binding.pry
 
 #====== second family =========
 
