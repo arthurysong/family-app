@@ -1,5 +1,7 @@
 <%= flash[:notice] %>
 
+<%= link_to "Sign in via GitHub", "/auth/github" %>
+
 <%= form_tag '/signin' do %>
     <%= label_tag 'email' %>
     <%= text_field_tag 'email' %>

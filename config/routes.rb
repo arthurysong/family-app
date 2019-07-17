@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   post '/signout' => 'sessions#destroy'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/github/callback', to: 'sessions#create'
 
 
   root 'application#index'
