@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= image_tag 'familytime-logo.png', id: 'logo' %>
     <div id="container">
       <div id="nav">
         <span><a href="/">Home</a></span>
@@ -26,7 +27,10 @@
         <% end %>
       </div>
       <br><br><br><br><br>
-      <%= yield %>
+
+      <div id="main-content"
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

@@ -1,0 +1,38 @@
+div.field_with_errors input[type="text"]{
+    border: 1px solid red;
+    display: inline;
+}
+
+#container {
+     margin: 0 auto;
+     width: 900px;
+
+     border: 1px solid black;
+     padding: 3px;
+     background-color: #d1d2f9;
+     box-shadow: 5px 5px 5px #888888;
+}
+
+#nav {
+    background-color: #9cbfed;
+    border: 1px solid black;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+body {
+    background-image: url(family-background.jpg);
+    font-family: Arial, Helvetica Neue, Helvetica,sans-serif; 
+}
+
+#main-content {
+    padding: 30px;
+}
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
