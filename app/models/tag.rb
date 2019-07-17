@@ -7,4 +7,8 @@ class Tag < ActiveRecord::Base
         last_name = self.role.family.last_name
         first_name + " " + last_name
     end
+
+    def user
+        self.role.user
+    end
 end

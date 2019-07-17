@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:create]
   resources :families, only: [:show] do 
     resources :boards, only: [:edit]
+    resources :users, only: [:show]
   end
   resources :boards, only: [:update]
   #resources :roles, only: [:create]

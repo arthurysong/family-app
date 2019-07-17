@@ -4,7 +4,7 @@
     <% board.tags.each do |tag| %>
         <li>
         <%= tag.content %><br>
-        <%= tag.full_name_of_creator %>
+        <%= link_to tag.full_name_of_creator, "/families/#{tag.board.family.id}/users/#{tag.user.id}" %>
         <%= tag.created_at.strftime("posted %e %b %Y at %k:%M") %>
         </li>
         <br>
