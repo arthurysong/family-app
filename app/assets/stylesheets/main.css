@@ -22,6 +22,11 @@ div.field_with_errors input[type="text"]{
     align-items: center;
 }
 
+#nav a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 body {
     background-image: url(family-background.jpg);
     font-family: Arial, Helvetica Neue, Helvetica,sans-serif; 
