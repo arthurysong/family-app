@@ -11,16 +11,12 @@
         <% role = Role.find_by(user_id: current_user.id, family_id: @family.id) %>
         <%= link_to "Leave Family", "/families/#{@family.id}/roles/#{role.id}", method: :delete %><br>
 
-        <%= link_to "Edit Family", "/families/#{@family.id}/edit" if User.parents_for_this_family(@family).include?(current_user) %>
+        <%= link_to "Edit Family", "/families/#{@family.id}/edit" if current_user.parent_of_this_family?(@family) %>
 
-        
         <%= render partial: 'boards/board', locals: { board: @family.board, family: @family } %>
         
-
         <%= render partial: 'tags/form', locals: { tag: @tag, board: @family.board } %> 
         <br>
-        
-        
         
     <% else %>
         <%= link_to "Join the #{@family.last_name} Family", new_family_role_path(@family.id) %>

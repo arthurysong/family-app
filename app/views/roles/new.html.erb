@@ -3,8 +3,8 @@
 <%= render partial: 'application/errors', locals: { object: @role } %>
 
 <%= form_for @family, method: :post, url: family_roles_path(@family) do |f| %>
+    
     <% if !!@family.password_digest %>
-
         <%= f.label :password %>
         <%= f.password_field :password %>
         <br>

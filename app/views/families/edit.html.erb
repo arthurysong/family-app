@@ -3,6 +3,6 @@
 <% @family.users.each do |user| %>
     <% role = user.my_role_in_this_family(@family) %>
     <% if user != current_user %>
-        <li><%= user.first_name %> <%= link_to "Disown", "/families/#{@family.id}/roles/#{role.id}", method: :delete %></li>
+        <li><%= user.first_name %> (<%= role.title %>) <%= link_to "Disown", "/families/#{@family.id}/roles/#{role.id}", method: :delete %></li>
     <% end %>
 <% end %>
