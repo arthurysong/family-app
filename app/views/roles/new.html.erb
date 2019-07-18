@@ -2,11 +2,7 @@
     <%= flash[:notice] %><br>
 <% end %>
 
-<% if @role.errors.any? %>
-    <% @role.errors.full_messages.each do |message| %>
-        <%= message %><br>
-    <% end %>
-<% end %>
+<%= render partial: 'application/errors', locals: { object: @role } %>
 
 <%= form_for @family, method: :post, url: family_roles_path(@family) do |f| %>
     <% if !!@family.password_digest %>
