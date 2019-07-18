@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_075213) do
+ActiveRecord::Schema.define(version: 2019_07_18_074619) do
 
   create_table "boards", force: :cascade do |t|
     t.string "header", default: "(No Header)"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_075213) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "first_name"
+    t.string "first_name", default: "(No Name)"
     t.string "password_digest"
   end
 
