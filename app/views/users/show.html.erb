@@ -1,13 +1,14 @@
 <h1>
-
     <% if current_user == @user %>
         Your Profile:
     <% end %>
     <%= @user.first_name %>
 </h2>
+
 <% if current_user == @user %>
     <%= link_to "Edit Profile", "/users/#{@user.id}/edit" %>
 <% end %>
+
 <h2>Families:</h2>
 <ul>
     <% @user.families.each do |family| %>
