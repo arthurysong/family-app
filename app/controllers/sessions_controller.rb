@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
     end
 
     def create
-        binding.pry
+        #binding.pry
         if auth_hash = request.env["omniauth.auth"]
             if auth_hash["info"]["email"] == nil
-                binding.pry
+                #binding.pry
                 flash[:notice] = "Please set your email in your github account as your public email"
                 render :new
             else

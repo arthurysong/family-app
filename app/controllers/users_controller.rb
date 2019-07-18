@@ -24,6 +24,25 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def edit
+        require_login
+        @user = User.find(params[:id])
+        authorize_user_for_edit(@user)
+    end
+
+    def update
+        require_login
+        @user = User.find(params[:id])
+        authorize_user_for_edit(@user)
+        @user.update(user_params)
+        if @user.valid?
+            @user.save
+            redirect_to @user
+        else
+            render 'users/edit'
+        end
+    end
+
     private
 
     def user_params
@@ -33,6 +52,12 @@ class UsersController < ApplicationController
     def require_logout
         if logged_in?
             redirect_to current_user
+        end
+    end
+
+    def authorize_user_for_edit(user)
+        if current_user != user
+            redirect_to user
         end
     end
 end

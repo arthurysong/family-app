@@ -5,6 +5,7 @@
     <% end %>
     <%= @user.first_name %>
 </h2>
+<%= link_to "Edit Profile", "/users/#{@user.id}/edit" %>
 <h2>Families:</h2>
 <ul>
     <% @user.families.each do |family| %>
