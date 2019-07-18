@@ -1,6 +1,6 @@
 <h1><%= board.header %></h1>
 
-<%= link_to "Edit Header", "/families/#{board.family.id}/boards/#{board.id}/edit" if User.parents_for_this_family(board.family).include?(current_user) %>
+<%= link_to "Edit Header", "/families/#{family.id}/boards/#{board.id}/edit" if current_user.parent_of_this_family?(family) %>
 
 <ul>
     <% board.tags.each do |tag| %>

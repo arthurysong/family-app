@@ -14,7 +14,7 @@
         <%= link_to "Edit Family", "/families/#{@family.id}/edit" if User.parents_for_this_family(@family).include?(current_user) %>
 
         
-        <%= render partial: 'boards/board', locals: { board: @family.board } %>
+        <%= render partial: 'boards/board', locals: { board: @family.board, family: @family } %>
         
 
         <%= render partial: 'tags/form', locals: { tag: @tag, board: @family.board } %> 
