@@ -1,8 +1,4 @@
-<% if tag.errors.any? %>
-    <% tag.errors.full_messages.each do |message| %>
-        <%= message %><br>
-    <% end %>
-<% end %>
+<%= render partial: 'application/errors', locals: { object: tag } %>
 
 <%= form_for tag do |f| %>
     <%= f.hidden_field :board_id, :value => board.id %>    

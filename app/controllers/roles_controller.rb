@@ -10,7 +10,7 @@ class RolesController < ApplicationController
 
     def create
         #binding.pry
-        binding.pry
+        #binding.pry
         @family = Family.find(params[:family_id])
         @role = Role.new(role_params)
 
@@ -21,7 +21,7 @@ class RolesController < ApplicationController
             end
         end
         #binding.pry
-        binding.pry
+        #binding.pry
         @role.user_id = current_user.id
         @role.family_id = @family.id
         if @role.save
