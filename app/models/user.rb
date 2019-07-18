@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
         end
     end
 
-    def my_role_in_this_family(family)
-        Role.find_by(user_id: self.id, family_id: family.id)
-    end
-
     def self.parents_for_this_family(family)
         self.joins(:roles).where(roles: { title: ["Mom", "Dad"] }).where(roles: { family_id: family.id })
+    end
+
+    def my_role_in_this_family(family)
+        Role.find_by(user_id: self.id, family_id: family.id)
     end
 
     def parent_of_this_family?(family)

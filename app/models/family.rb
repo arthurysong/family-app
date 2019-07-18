@@ -4,5 +4,4 @@ class Family < ActiveRecord::Base
     has_secure_password :validations => false
     has_one :board
     validates :last_name, presence: true
-
 end
