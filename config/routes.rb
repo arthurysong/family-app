@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   #resources :roles, only: [:create]
   #get '/users/new' => 'users#new'
   #post '/users' => 'users#create'
-
+  #get '/signout' => 'sessions#destroy'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   post '/signout' => 'sessions#destroy'
