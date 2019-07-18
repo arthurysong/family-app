@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
   end
   resources :boards, only: [:update]
+
   #resources :roles, only: [:create]
   #get '/users/new' => 'users#new'
   #post '/users' => 'users#create'
@@ -18,8 +19,6 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   post '/signout' => 'sessions#destroy'
-  get '/auth/github/callback', to: 'sessions#create'
-
-
+  get '/auth/github/callback' => 'sessions#create'
   root 'application#index'
 end
