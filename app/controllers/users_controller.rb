@@ -26,14 +26,16 @@ class UsersController < ApplicationController
 
     def edit
         require_login
+        authorize_user_for_edit
+
         @user = User.find(params[:id])
-        authorize_user_for_edit(@user)
     end
 
     def update
         require_login
+        authorize_user_for_edit
+
         @user = User.find(params[:id])
-        authorize_user_for_edit(@user)
         @user.update(user_params)
         if @user.valid?
             @user.save
@@ -55,9 +57,10 @@ class UsersController < ApplicationController
         end
     end
 
-    def authorize_user_for_edit(user)
+    def authorize_user_for_edit
+        user = User.find(params[:id])
         if current_user != user
-            redirect_to user
+            redirect_to current_user
         end
     end
 end
