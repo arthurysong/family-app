@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
     validates :first_name, presence: true
     validates :email, uniqueness: true
 
+    def self.find_or_create_by_omniauth(auth_hash)
+        oauth_email = 
+    end
+
     def my_role_in_this_family(family)
         Role.find_by(user_id: self.id, family_id: family.id)
     end

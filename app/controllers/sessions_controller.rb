@@ -6,10 +6,17 @@ class SessionsController < ApplicationController
     def create
         binding.pry
         if auth_hash = request.env["omniauth.auth"]
-            user = User.find_or_create_by_omniauth(auth_hash)
-            session[:user_id] = user.id
+            if auth_hash["info"]["email"] == nil
+                binding.pry
+                flash[:notice] = "Please set your email in your github account to public"
+                render :new
+            else
 
-            redirect_to user
+                user = User.find_or_create_by_omniauth(auth_hash)
+                session[:user_id] = user.id
+
+                redirect_to user
+            end
         else
             user = User.find_by(email: params[:email])
             if user && user.authenticate(params[:password])
