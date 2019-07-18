@@ -13,7 +13,6 @@ class TagsController < ApplicationController
         else
             render "families/show"
         end
-        #binding.pry
     end
 
     private

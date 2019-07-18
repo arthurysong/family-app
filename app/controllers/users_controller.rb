@@ -15,7 +15,6 @@ class UsersController < ApplicationController
             @user.save
             redirect_to @user
         else
-            #binding.pry
             render 'users/new'
         end
     end

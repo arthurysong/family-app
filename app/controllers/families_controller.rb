@@ -2,17 +2,13 @@ class FamiliesController < ApplicationController
     before_action :require_login
     skip_before_action :require_login, only: [:index, :show]
 
-    
     def index
         @families = Family.all
     end
 
-
     def show
-        #binding.pry
         @family = Family.find(params[:id])
         @tag = Tag.new
-        #binding.pry
     end
 
     def new
@@ -21,7 +17,6 @@ class FamiliesController < ApplicationController
 
     def create
         @family = Family.create(family_params)
-
 
         board = Board.create()
         @family.board = board
@@ -36,9 +31,7 @@ class FamiliesController < ApplicationController
         role.user = current_user
         role.save
         
-
         if @family.valid?
-            #binding.pry
             redirect_to @family
         else
             render 'families/new'
@@ -58,7 +51,6 @@ class FamiliesController < ApplicationController
 
     def authorize_user_for_family_edit
         family = Family.find(params[:id])
-        #binding.pry
         if !(current_user.parent_of_this_family?(family))
             redirect_to family
         end
