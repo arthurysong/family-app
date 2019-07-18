@@ -11,6 +11,7 @@ class FamiliesController < ApplicationController
     def show
         #binding.pry
         @family = Family.find(params[:id])
+        @tag = Tag.new
         #binding.pry
     end
 

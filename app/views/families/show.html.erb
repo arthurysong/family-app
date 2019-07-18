@@ -17,7 +17,7 @@
         <%= render partial: 'boards/board', locals: { board: @family.board } %>
         
 
-        <%= render partial: 'tags/form', locals: { tag: Tag.new, board: @family.board } %> 
+        <%= render partial: 'tags/form', locals: { tag: @tag, board: @family.board } %> 
         <br>
         
         

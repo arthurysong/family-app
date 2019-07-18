@@ -1,3 +1,9 @@
+<% if tag.errors.any? %>
+    <% tag.errors.full_messages.each do |message| %>
+        <%= message %><br>
+    <% end %>
+<% end %>
+
 <%= form_for tag do |f| %>
     <%= f.hidden_field :board_id, :value => board.id %>    
     <%= f.text_area :content %>
