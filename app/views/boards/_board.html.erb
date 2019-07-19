@@ -8,6 +8,7 @@
         <%= tag.content %><br>
         <%= link_to tag.full_name_of_creator, "/families/#{tag.board.family.id}/users/#{tag.user.id}" %>
         <%= tag.created_at.strftime("posted %e %b %Y at %k:%M") %>
+        <%= link_to "Edit", "/boards/#{board.id}/tags/#{tag.id}/edit" if current_user == tag.user %>
         </li>
         <br>
     <% end %>

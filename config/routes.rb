@@ -6,12 +6,16 @@ Rails.application.routes.draw do
   resources :families, only: [:show] do
     resources :roles, only: [:new, :create, :destroy]
   end
-  resources :tags, only: [:create]
+  resources :tags, only: [:create, :update]
   resources :families, only: [:show] do 
     resources :boards, only: [:edit]
     resources :users, only: [:show]
   end
   resources :boards, only: [:update]
+  resources :boards, only: [:show] do
+    resources :tags, only: [:edit]
+  end
+
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'

@@ -15,6 +15,23 @@ class TagsController < ApplicationController
         end
     end
 
+    def edit
+        @tag = Tag.find(params[:id])
+        @board = Board.find(params[:board_id])
+        binding.pry
+    end
+
+    def update
+        @tag = Tag.find(params[:id])
+        @board = Board.find(params[:tag][:board_id])
+        @family = @board.family
+        if @tag.update(tag_params)
+            redirect_to @family
+        else
+            render :edit
+        end
+    end
+
     private
 
     def tag_params
