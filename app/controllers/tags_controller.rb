@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
+    before_action :require_login
+
     def create
-        require_login
         @family = Board.find(params[:tag][:board_id]).family
         if !(@family.users.include?(current_user))
             redirect_to @family and return
@@ -17,8 +18,10 @@ class TagsController < ApplicationController
 
     def edit
         @tag = Tag.find(params[:id])
+
+        redirect_to current_user if current_user != @tag.user
+      
         @board = Board.find(params[:board_id])
-        binding.pry
     end
 
     def update
