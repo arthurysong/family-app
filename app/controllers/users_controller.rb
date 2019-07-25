@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :require_login, :authorize_user_for_edit, only: [:edit, :update]
 
     def new
         require_logout
@@ -24,20 +25,13 @@ class UsersController < ApplicationController
     end
 
     def edit
-        require_login
-        authorize_user_for_edit
-
         @user = User.find(params[:id])
     end
 
     def update
-        require_login
-        authorize_user_for_edit
-
         @user = User.find(params[:id])
         @user.update(user_params)
-        if @user.valid?
-            @user.save
+        if @user.save
             redirect_to @user
         else
             render 'users/edit'
