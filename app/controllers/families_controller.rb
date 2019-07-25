@@ -16,22 +16,24 @@ class FamiliesController < ApplicationController
     end
 
     def create
-        @family = Family.create(family_params)
+        @family = Family.new(family_params)
 
-        board = Board.create()
-        @family.board = board
-        if params[:header] != ""
-            board.header = params[:header]
-            board.save
-        end
-        @family.save
-
-        role = Role.create(title: params[:title])
-        role.family = @family
-        role.user = current_user
-        role.save
-        
         if @family.valid?
+            board = Board.create()
+            @family.board = board
+
+            if params[:header] != ""
+                board.header = params[:header]
+                board.save
+            end
+
+            @family.save
+
+            role = Role.new(title: params[:title])
+            role.family = @family
+            role.user = current_user
+            role.save
+
             redirect_to @family
         else
             render 'families/new'
