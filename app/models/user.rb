@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
     validates :email, presence: true
     validates :first_name, presence: true
     validates :email, uniqueness: true
-
+    scope :parents_for_this_family, ->(family){ joins(:roles).where(roles: { title: ["Mom", "Dad"] }).where(roles: { family_id: family.id }) }
+ 
     def self.find_or_create_by_omniauth(auth_hash)
         oauth_email = auth_hash["info"]["email"]
         if user = User.find_by(:email => oauth_email)
@@ -14,10 +15,6 @@ class User < ActiveRecord::Base
         else
             user = User.create(:email => oauth_email, :password => SecureRandom.hex)
         end
-    end
-
-    def self.parents_for_this_family(family)
-        self.joins(:roles).where(roles: { title: ["Mom", "Dad"] }).where(roles: { family_id: family.id })
     end
 
     def my_role_in_this_family(family)
