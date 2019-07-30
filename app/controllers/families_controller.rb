@@ -6,6 +6,10 @@ class FamiliesController < ApplicationController
         @families = Family.all
     end
 
+    def feature
+        @family = Family.largest_family
+    end
+
     def show
         @family = Family.find(params[:id])
         @tag = Tag.new
